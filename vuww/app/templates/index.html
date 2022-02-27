@@ -1,0 +1,96 @@
+ {% extends 'base.html' %}
+ 
+ {% block css %}
+ <style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        font-family: Arial;
+    }
+    
+    /* The grid: Four equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+    
+    /* Style the images inside the grid */
+    .column img {
+        opacity: 0.8; 
+        cursor: pointer; 
+        border: 1px solid #ccc;
+    }
+    
+    .column img:hover {
+        opacity: 1;
+        border: 1px solid #777;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    
+    /* Expanding image text */
+    #imgtext {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: white;
+        font-size: 20px;
+    }
+    
+    /* Closable button inside the expanded image */
+    .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+    }
+    .imgrid{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+    .image{
+        position: relative;
+    }
+    .delete-icon{
+        position:absolute;
+        top:.2rem;
+        right: .2rem;
+    }
+    
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="display-3">Welcome</h1>
+    <p class="lead">Use this example</p>
+    <hr class="my-2">
+</div>
+
+<div class="container">
+    <div class="row imgrid">
+        {% for item in vrlist %}
+        <div class="image">
+            <img src="{{item.front}}" class="img-fluid shadow-sm" alt="">
+            <a href="/vt/{{item.id}}" class="btn btn-danger btn-sm delete-icon"></i>Let's Tour</a>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %} 
+

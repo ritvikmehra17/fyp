@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% endblock %}
+{% block body %}
+{% include "notify.html" %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 mx-auto mt-5">
+            <form class="card" method="post" enctype="multipart/form-data">
+                <div class="card-header">
+                    <p class="lead">please browse image to upload</p>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="imageId">Image</label>
+                        <input type="file" name="file[]" multiple="" class="form-control-file" name="imageId" id="imageId" placeholder="browse the image" aria-describedby="imageHelp">
+                        <small id="imageHelp" class="form-text text-muted">please select image below 2mb</small>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+    $(function(){
+        var fileUpload = $("input[type='file']");
+        fileUpload.on('change',function(){
+            if (parseInt(fileUpload.get(0).files.length)>10){
+                alert("You can only upload a maximum of 10 files");
+                $(':button[type="submit"]').prop('disabled', true);
+            }
+            else{
+                $(':button[type="submit"]').prop('disabled', false);
+            }
+            
+        });    
+    })
+</script>
+
+{% endblock %}
