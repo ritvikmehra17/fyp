@@ -44,11 +44,11 @@
   const viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
   viewer.add( panorama );
 
-  // var infospot1, infospot2, infospot3;
-  // infospot2 = new PANOLENS.Infospot( 350, PANOLENS.DataImage.Info );
-  // infospot2.position.set( -1294.60, 181.52, -4298.10 );
-  // infospot2.addHoverText( 'Hovering Infospot' );
-  // panorama_main_image.add( infospot2 );
+  var infospot1, infospot2, infospot3;
+  infospot2 = new PANOLENS.Infospot( 350, PANOLENS.DataImage.Info );
+  infospot2.position.set( -1294.60, 181.52, -4298.10 );
+  infospot2.addHoverText( 'Hovering Infospot' );
+  panorama_main_image.add( infospot2 );
 
 </script>
 {% endblock %}
