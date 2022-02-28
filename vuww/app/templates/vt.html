@@ -7,7 +7,7 @@
     width: 100%;
     height: 100%; 
   }
-
+  
   #panolens-separate-container:-webkit-full-screen{
     left: 0;
     top: 0;
@@ -23,6 +23,53 @@
   #panolens-separate-container:fullscreen {
     left: 0;
     top: 0;
+  } 
+  
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+  }
+  
+  a:link, a:visited{
+    color: #bdc3c7;
+  }
+  
+  .credit{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+  }
+  
+  #desc-container {
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 200px;
+    min-height: 250px;
+    background: #fff;
+    color: #000;
+    border-radius: 3px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  #desc-container > iframe {
+    border: none;
+    width:100%;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  .text {
+    padding: 0 20px 20px 20px;
   }
 </style>  
 {% endblock %}
@@ -31,6 +78,12 @@
 <h1>{{vr.title}}</h1>
 <div id="panolens-separate-container"></div>
 
+<div id="desc-container" style="display:none">
+  <iframe src="https://www.youtube.com/embed/D7icsuamx5E"></iframe>
+  <div class="title">China's Forgotten War</div>
+  <div class="text">WWII came to the small town of Tai’erzhuang in central China – and it was never the same again. The town was strategically placed, on the north-south transport railway corridor and the ancient Grand Canal, and so was a focus of the Japanese Imperial army as it advanced. Li Jing Shan was only a child when his family fled the fighting. They returned to find their home, and most of the town, in ruins.</div>
+</div>
+
 {% endblock %}
 
 {% block js %}
@@ -38,17 +91,36 @@
 <script src="/static/js/panolens.min.js"></script>
 
 <script>
-       
-  const panorama = new PANOLENS.ImagePanorama('{{cube}}');
-  console.log(panorama)
-  const viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
+  
+  var infospot, infospot2, panorama, viewer;
+  
+  infospot = new PANOLENS.Infospot();
+  // infospot.position.set( 5000.00, -665.23, -3996.49);
+  infospot.position.set( 10000.00, -665.23, -3996.49);
+  infospot.addHoverText( 'The Where Is Bar' );
+  
+  infospot2 = new PANOLENS.Infospot( 300, PANOLENS.DataImage.Info );
+  //infospot2.position.set( -5000.00, -1825.25, 197.56 );
+  infospot2.position.set( 0,-1000,-6000);
+  infospot2.addHoverElement( document.getElementById( 'desc-container' ), 200 );
+  
+  
+  panorama = new PANOLENS.ImagePanorama('{{cube}}');
+  panorama.add(infospot);
+  panorama.add(infospot2)
+  viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
+  // viewer = new PANOLENS.Viewer({output: 'console'});
   viewer.add( panorama );
-
-  var infospot1, infospot2, infospot3;
-  infospot2 = new PANOLENS.Infospot( 350, PANOLENS.DataImage.Info );
-  infospot2.position.set( -1294.60, 181.52, -4298.10 );
-  infospot2.addHoverText( 'Hovering Infospot' );
-  panorama_main_image.add( infospot2 );
-
+  
+  // const panorama = new PANOLENS.ImagePanorama('{{cube}}');
+  // const viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
+  // viewer.add( panorama );
+  
+  // var infospot2;
+  // infospot2 = new PANOLENS.Infospot( 350, `{{cube}}` );
+  // infospot2.position.set( 10,10,10 );
+  // infospot2.addHoverText( 'Hovering Infospot' );
+  // panorama_main_image.add( infospot2 );
+  
 </script>
 {% endblock %}
