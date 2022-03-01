@@ -243,5 +243,5 @@ def virtualtour(id):
         print(out)    
     save_path +="0001.png"
     save_path = save_path[3:]
-    return render_template('vt.html',title='Virtual Tour',vr=vr,cube=save_path)
+    return render_template('vt.html',title='Virtual Tour',vr=vr,cube=save_path, info=vr.description)
     
