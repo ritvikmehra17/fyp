@@ -97,12 +97,12 @@
 
 <script>
   
-  var infospot, infospot2, panorama, viewer;
+  var infospot, infospot2, panorama1, viewer;
   
-  infospot = new PANOLENS.Infospot();
+  // infospot = new PANOLENS.Infospot();
   // infospot.position.set( 5000.00, -665.23, -3996.49);
-  infospot.position.set( 10000.00, -665.23, -3996.49);
-  infospot.addHoverText( 'The Where Is Bar' );
+  // infospot.position.set( 10000.00, -665.23, -3996.49);
+  // infospot.addHoverText( 'The Where Is Bar' );
   
   infospot2 = new PANOLENS.Infospot( 300, PANOLENS.DataImage.Info );
   //infospot2.position.set( -5000.00, -1825.25, 197.56 );
@@ -110,12 +110,22 @@
   infospot2.addHoverElement( document.getElementById( 'desc-container' ), 200 );
   
   
-  panorama = new PANOLENS.ImagePanorama('{{cube}}');
-  panorama.add(infospot);
-  panorama.add(infospot2)
-  viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
+  panorama1 = new PANOLENS.ImagePanorama('{{cube}}');
+  panorama1.add(infospot);
+  panorama1.add(infospot2)
 
-  viewer.add( panorama );
+  panorama2 = new PANOLENS.ImagePanorama('/static/output/My_Creation/cube0001.png');
+
+  viewer = new PANOLENS.Viewer({ container: document.querySelector( '#panolens-separate-container' ) });
+  viewer.add( panorama1 );
+  viewer.add( panorama2 );
+  // Linking between panoramas
+
+  // Pair
+  // -3145.23, -3704.40, 1149.48
+  panorama1.link( panorama2, new THREE.Vector3( -3500,-1000,-7000 ) );
+  panorama2.link( panorama1, new THREE.Vector3( -3429.01, 1205.85, -3421.88 ) );
+
   
 </script>
 {% endblock %}
