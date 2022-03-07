@@ -67,6 +67,11 @@
     .delete-icon{
         position:absolute;
         top:.2rem;
+        left: .2rem;
+    }
+    .delete-icon2{
+        position:absolute;
+        top:.2rem;
         right: .2rem;
     }
     
@@ -85,7 +90,8 @@
         {% for item in vrlist %}
         <div class="image">
             <img src="{{item.front}}" class="img-fluid shadow-sm" alt="">
-            <a href="/vt/{{item.id}}" class="btn btn-danger btn-sm delete-icon"></i>Let's Tour</a>
+            <a href="/vt/{{item.id}}" class="btn btn-primary btn-sm delete-icon"></i>Let's Tour</a>
+            <a href="/remove_vt/{{item.id}}" class="btn btn-danger btn-sm delete-icon2"><i class="fa fa-trash"></i> delete</a>
             
         </div>
         {% endfor %}

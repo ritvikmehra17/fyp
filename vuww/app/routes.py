@@ -217,6 +217,23 @@ def removeImage(id):
     return redirect('/dashboard')
 
 
+@app.route('/remove_vt/<int:id>',methods=['GET','POST'])
+def removeVT(id):
+    image = MyCube.query.get(id)
+    try:
+        if os.path.exists('app'+image.front):
+            os.unlink('app'+image.front)
+        # MyUpload.query.filter_by(id=id).delete()
+        MyCube.query.filter_by(id=id).delete()
+        db.session.commit()
+        flash('image deleted successfully','success')
+    except Exception as e:
+        print(e)
+        flash('houston we have a problem','danger')
+
+    return redirect('/index')
+
+
 
     
     

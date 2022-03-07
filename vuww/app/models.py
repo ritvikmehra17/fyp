@@ -44,12 +44,12 @@ class MyUpload(db.Model):
 
 class MyCube(db.Model):
     id=db.Column(db.Integer, primary_key=True, autoincrement=True) 
-    front=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
-    back=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
-    right=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
-    left=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
-    ceiling=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
-    floor=db.Column(db.String(255),db.ForeignKey('my_upload.id'))
+    front=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
+    back=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
+    right=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
+    left=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
+    ceiling=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
+    floor=db.Column(db.String(255),db.ForeignKey('my_upload.id', ondelete="cascade"))
     created_at=db.Column(db.DateTime,nullable=False,index=True, default=dt.datetime.utcnow)
     user_id=db.Column(db.Integer,db.ForeignKey('user.id'))
     publish=db.Column(db.Boolean,nullable=False, default=False)
