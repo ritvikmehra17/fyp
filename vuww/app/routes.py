@@ -207,6 +207,7 @@ def removeImage(id):
         if os.path.exists('app'+image.img):
             os.unlink('app'+image.img)
         MyUpload.query.filter_by(id=id).delete()
+        MyCube.query.filter_by(id=id).delete()
         db.session.commit()
         flash('image deleted successfully','success')
     except Exception as e:
