@@ -1,5 +1,4 @@
 from asyncio.windows_events import NULL
-from email.mime import image
 from flask import render_template,redirect,request,flash,session,url_for
 from flask_login import logout_user,current_user, login_user, login_required
 from app import app,db
@@ -160,10 +159,19 @@ def uploadImage():
 
 
 
+def clean_image_entries(imglist):
+    for img in imglist:
+        if not os.path.exists("app"+img.img):
+            MyUpload.query.filter_by(id=img.id).delete()
+            print('deleted',img.img)
+    db.session.commit()
+
+
+
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboardImage():
     imglist = MyUpload.query.filter_by(user_id=current_user.id)    
-   
+    clean_image_entries(imglist)
         
     return render_template('dashboard.html',title='Dashboard',imglist=imglist)
 
@@ -217,26 +225,41 @@ def removeImage(id):
     return redirect('/dashboard')
 
 
+def remove_file(filename):
+    try:
+        if os.path.exists('app'+filename):
+            os.unlink('app'+filename)
+        else:
+            print('file not found',filename)
+    except Exception as e:
+        print(e)
+
+
 @app.route('/remove_vt/<int:id>',methods=['GET','POST'])
 def removeVT(id):
     image = MyCube.query.get(id)
+    print(type(image))
     try:
-        if os.path.exists('app'+image.front):
-            os.unlink('app'+image.front)
-        # MyUpload.query.filter_by(id=id).delete()
+        remove_file(image.ceiling)
+        remove_file(image.floor)
+        remove_file(image.front)
+        remove_file(image.back)
+        remove_file(image.left)
+        remove_file(image.right)
+        MyUpload.query.filter_by(img=image.front).delete()
+        MyUpload.query.filter_by(img=image.back).delete()
+        MyUpload.query.filter_by(img=image.left).delete()
+        MyUpload.query.filter_by(img=image.right).delete()
+        MyUpload.query.filter_by(img=image.ceiling).delete()
+        MyUpload.query.filter_by(img=image.floor).delete()
         MyCube.query.filter_by(id=id).delete()
         db.session.commit()
         flash('image deleted successfully','success')
     except Exception as e:
         print(e)
-        flash('houston we have a problem','danger')
+        flash(f'houston we have a problem {e}','danger')
 
     return redirect('/index')
-
-
-
-    
-    
 
 
 
