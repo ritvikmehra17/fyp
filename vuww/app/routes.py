@@ -201,11 +201,22 @@ def cubicImage():
             db.session.add(c)
             db.session.commit()
             flash('file uploaded and saved','success')
-            return redirect('/')            
+            # return redirect('/')         
+            return redirect('/spot')    
         else:
             flash('All walls should be unique','danger')   
 
     return render_template('cube.html',title='Cubic Image',imglist=imglist)
+
+
+
+@app.route('/spot', methods=['GET','POST'])
+def spot_pos():
+    
+        
+    return render_template('spot.html')
+
+
 
 
 @app.route('/remove/<int:id>',methods=['GET','POST'])

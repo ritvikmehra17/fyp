@@ -59,6 +59,14 @@ class MyCube(db.Model):
     def __repr__(self):
         return self.title
 
+class Spot(db.Model):
+    id=db.Column(db.Integer, primary_key=True, autoincrement=True)
+    cube_id=db.Column(db.Integer,db.ForeignKey('my_cube.id'))
+    x=db.Column(db.Integer,nullable=True)
+    y=db.Column(db.Integer,nullable=True)
+    z=db.Column(db.Integer,nullable=True)
+
+     
 
 class MessageData(db.Model):
     id = db.Column(db.Integer, primary_key=True)

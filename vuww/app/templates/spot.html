@@ -1,0 +1,37 @@
+
+
+
+  {% extends 'base.html' %}
+
+{% block css %}
+
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-9 mx-auto mt-5">
+            {% include "notify.html" %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="display-4">InfoSpot Details</div>
+                    <p class="lead">enter the cordinates</p>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-input">
+                          <label for="x" class="form-label"><h5>x</h5></label>
+                          <input type="text" class="form-control" id="x" value="x-coordinates">
+                          <label for="y" class="form-label"><h5>y</h5></label>
+                          <input type="text" class="form-control" id="y" value="y-coordinates">
+                          <label for="z" class="form-label"><h5>z</h5></label>
+                          <input type="text" class="form-control" id="z" value="z-coordinates">
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
