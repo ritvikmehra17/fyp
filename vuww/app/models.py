@@ -55,10 +55,9 @@ class MyCube(db.Model):
     publish=db.Column(db.Boolean,nullable=False, default=False)
     title = db.Column(db.String(50))
     description = db.Column(db.String(255),default="no description")
-
+    
     def __repr__(self):
         return self.title
-
 
 
 class MessageData(db.Model):
