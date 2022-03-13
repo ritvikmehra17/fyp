@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from flask import render_template,redirect,request,flash,session,url_for
 from flask_login import logout_user,current_user, login_user, login_required
 from app import app,db
-from app.models import User, MessageData, MyUpload, MyCube
+from app.models import MySpot, User, MessageData, MyUpload, MyCube
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
@@ -212,9 +212,22 @@ def cubicImage():
 
 @app.route('/spot', methods=['GET','POST'])
 def spot_pos():
-    
-        
-    return render_template('spot.html')
+    # imglist = MyCube.query.filter_by(cube_id=my_cube.id)
+    sp = MyCube.query.get(id)
+    if request.method == 'POST':
+        data=request.form.to_dict(flat=True)
+        c = MySpot(
+                    x=data.get('x'),
+                    y=data.get('y'),
+                    z=data.get('z')
+                    )
+                
+        db.session.add(c)
+        db.session.commit()
+        flash('file uploaded and saved','success')
+        return redirect('/')         
+
+    return render_template('spot.html',title="InfoSpot",sp=sp)
 
 
 

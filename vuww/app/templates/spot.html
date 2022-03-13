@@ -1,7 +1,7 @@
 
 
 
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block css %}
 
@@ -12,26 +12,35 @@
     <div class="row">
         <div class="col-lg-6 col-sm-9 mx-auto mt-5">
             {% include "notify.html" %}
-            <div class="card">
-                <div class="card-header">
-                    <div class="display-4">InfoSpot Details</div>
-                    <p class="lead">enter the cordinates</p>
-                </div>
-                <div class="card-body">
-                    <form method="post">
+            <form method="post">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="display-4">InfoSpot Details</div>
+                        <p class="lead">enter the cordinates</p>
+                    </div>
+                    <div class="card-body">
                         <div class="form-input">
-                          <label for="x" class="form-label"><h5>x</h5></label>
-                          <input type="text" class="form-control" id="x" value="x-coordinates">
-                          <label for="y" class="form-label"><h5>y</h5></label>
-                          <input type="text" class="form-control" id="y" value="y-coordinates">
-                          <label for="z" class="form-label"><h5>z</h5></label>
-                          <input type="text" class="form-control" id="z" value="z-coordinates">
-                    </form>
+                            <label for="x" class="form-label"><h5>x</h5></label>
+                            <input type="text" class="form-control" name="x" value="0">
+                            <label for="y" class="form-label"><h5>y</h5></label>
+                            <input type="text" class="form-control" name="y" value="-1000">
+                            <label for="z" class="form-label"><h5>z</h5></label>
+                            <input type="text" class="form-control" name="z" value=-6000>
+                        </div>
+                        
+                    </div>
                 </div>
                 
-            </div>
+                <div class ="card-footer">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-block">submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
