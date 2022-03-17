@@ -175,7 +175,7 @@ def dashboardImage():
         
     return render_template('dashboard.html',title='Dashboard',imglist=imglist)
 
-
+g=0
 @app.route('/cube', methods=['GET','POST'])
 def cubicImage():
     imglist = MyUpload.query.filter_by(user_id=current_user.id)
@@ -200,7 +200,8 @@ def cubicImage():
             
             db.session.add(c)
             db.session.commit()
-            flash('file uploaded and saved','success')
+            session['last_cube_id']=c.id
+            flash('VR room generated and ready','success')
             # return redirect('/')         
             return redirect('/spot')    
         else:
@@ -211,23 +212,26 @@ def cubicImage():
 
 
 @app.route('/spot', methods=['GET','POST'])
-def spot_pos():
-    # imglist = MyCube.query.filter_by(cube_id=my_cube.id)
-    sp = MyCube.query.get(id)
-    if request.method == 'POST':
-        data=request.form.to_dict(flat=True)
-        c = MySpot(
-                    x=data.get('x'),
-                    y=data.get('y'),
-                    z=data.get('z')
-                    )
-                
-        db.session.add(c)
-        db.session.commit()
-        flash('file uploaded and saved','success')
-        return redirect('/')         
+def spot_pos():   
+    if session.get('last_cube_id'):
+        if request.method == 'POST':
+            data=request.form.to_dict(flat=True)
+            c = MySpot(
+                        x=data.get('x'),
+                        y=data.get('y'),
+                        z=data.get('z'),
+                        cube_id=session.get('last_cube_id')
+                        )
+                    
+            db.session.add(c)
+            db.session.commit()
+            flash('info spot generated','success')
+            return redirect('/')         
 
-    return render_template('spot.html',title="InfoSpot",sp=sp)
+        return render_template('spot.html',title="InfoSpot")
+    else:
+        flash("create a cube vr content first",'danger')
+        return redirect('/cube')
 
 
 
@@ -290,6 +294,11 @@ def removeVT(id):
 @app.route('/vt/<int:id>',methods=['GET','POST'])
 def virtualtour(id):
     vr = MyCube.query.get(id)
+    spots = MySpot.query.filter_by(cube_id=session.get('last_cube_id'))
+    for sp in spots:
+        spx=sp.x
+        spy=sp.y
+        spz=sp.z
     title=(vr.title).replace(' ','_')
     loc = f"app/static/output/{title}/"
     os.mkdir(loc) if not os.path.exists(loc) else print('path found')
@@ -308,5 +317,5 @@ def virtualtour(id):
         print(out)    
     save_path +="0001.png"
     save_path = save_path[3:]
-    return render_template('vt.html',title='Virtual Tour',vr=vr,cube=save_path, info=vr.description)
+    return render_template('vt.html',title='Virtual Tour',vr=vr,cube=save_path, info=vr.description,spx=spx,spy=spy,spz=spz)
     

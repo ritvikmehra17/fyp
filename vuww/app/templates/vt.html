@@ -105,13 +105,12 @@
   // infospot.addHoverText( 'The Where Is Bar' );
   
   infospot2 = new PANOLENS.Infospot( 300, PANOLENS.DataImage.Info );
-  //infospot2.position.set( -5000.00, -1825.25, 197.56 );
-  infospot2.position.set( {{sp.x}} ,{{sp.y}}, {{sp.z}});
+  // infospot2.position.set(0, -1000,-6000);
+  infospot2.position.set({{spx}} , {{spy}} , {{spz}});
   infospot2.addHoverElement( document.getElementById( 'desc-container' ), 200 );
   
   
   panorama1 = new PANOLENS.ImagePanorama('{{cube}}');
-  panorama1.add(infospot);
   panorama1.add(infospot2)
 
   panorama2 = new PANOLENS.ImagePanorama('/static/output/Realestate1/cube0001.jpg');
@@ -121,7 +120,7 @@
   viewer.add( panorama2 );
   // Linking between panoramas
 
-  // Pair
+  // Pair 
   // -3145.23, -3704.40, 1149.48
   panorama1.link( panorama2, new THREE.Vector3( -3500,-1000,-7000 ) );
   panorama2.link( panorama1, new THREE.Vector3( -2229.01, 505.85, -5421.88 ) );
