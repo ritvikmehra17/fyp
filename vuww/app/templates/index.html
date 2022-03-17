@@ -75,6 +75,9 @@
         right: .2rem;
     }
     
+    
+    
+    
 </style>
 {% endblock %}
 
@@ -84,20 +87,58 @@
     <h1 class="display-3">Welcome </h1>
     <hr class="my-2">
     <p class="lead">Choose any of the below tour</p>
+    <!-- <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+    </label> -->
+    
+    
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" checked data-toggle="toggle" data-on="Published" data-off="Unpublished" data-onstyle="success" 
+        data-offstyle="danger" data-bind="click: toggleView" name="publish" id="publishCheck"/>
+    </div>
+    
 </div>
 
 <div class="container">
     <div class="row imgrid">
         {% for item in vrlist %}
-        <div class="image">
+        {% if item.publish %}
+        <div class="image publish">
             <img src="{{item.front}}" class="img-fluid shadow-sm" alt="">
             <a href="/vt/{{item.id}}" class="btn btn-primary btn-sm delete-icon"></i>Let's Tour</a>
             <a href="/remove_vt/{{item.id}}" class="btn btn-danger btn-sm delete-icon2"><i class="fa fa-trash"></i> </a>
             
         </div>
+        {% elif item.user_id == current_user.id %}
+        <div class="image draft">
+            <img src="{{item.front}}" class="img-fluid shadow-sm" alt="">
+            <a href="/vt/{{item.id}}" class="btn btn-primary btn-sm delete-icon"></i>Let's Tour</a>
+            <a href="/remove_vt/{{item.id}}" class="btn btn-danger btn-sm delete-icon2"><i class="fa fa-trash"></i> </a>
+            
+        </div>
+        {% endif %}
+        
         {% endfor %}
     </div>
 </div>
 
 {% endblock %} 
 
+{% block js %}
+<script>
+    $(".draft").addClass('d-none')
+    $('#checkbox-value').text($('#publishCheck').val());
+    $("#publishCheck").on('change', function() {
+        if ($(this).is(':checked')) {
+            $(".draft").addClass('d-none')
+            $(".publish").removeClass('d-none')
+        } else {
+            $(".publish").addClass('d-none')
+            $(".draft").removeClass('d-none')
+        }
+        
+        $('#checkbox-value').text($('#publishCheck').val());
+    });
+</script>
+{% endblock %}

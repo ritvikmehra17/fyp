@@ -12,8 +12,7 @@ import os
 @app.route('/index')
 @login_required
 def index():
-    imglist = MyCube.query.filter_by(publish=True)
-    
+    imglist = MyCube.query.all()
     return render_template('index.html',title='Home', vrlist=imglist)
 
 @app.route('/login',methods=['GET', 'POST'])
