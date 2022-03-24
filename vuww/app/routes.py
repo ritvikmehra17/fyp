@@ -8,6 +8,11 @@ from werkzeug.utils import secure_filename
 import os
 
 
+@app.route('/home')
+def home():
+    return render_template('home.html',title='Home')
+
+
 @app.route('/')
 @app.route('/index')
 @login_required

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+
+
+<body>
+  <!-- Top navigation -->
+ 
+  <!-- Page sections | Home -->
+  <section class="page-sections home vr-container" id="home">
+    <div class="vr-overlay-content">
+      <h1>Let's explore the virtual world.</h1>
+    <button class="action"onclick="window.location.href = '/login';">Get Started</button>
+    </div>
+    <span class="attribution"><a title="By DXR (Own work) [CC BY-SA 4.0 (http://creativecommons.org/licenses/by-sa/4.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ARheingauer_Dom%2C_Geisenheim%2C_360_Panorama_(Equirectangular_projection).jpg">By DXR (Own work) [CC BY-SA 4.0 (http://creativecommons.org/licenses/by-sa/4.0)], via Wikimedia Commons</a></span>
+    <!-- This is where I want to place the a-frame embed code -->
+    <a-scene class="vr-background" id="aframe-viewer">
+      <a-entity rotation="0 0 0">
+        <a-animation attribute="rotation" dur="150000" easing="linear" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation>
+        <a-sky src="https://upload.wikimedia.org/wikipedia/commons/1/18/Rheingauer_Dom%2C_Geisenheim%2C_360_Panorama_%28Equirectangular_projection%29.jpg"></a-sky>
+      </a-entity>
+    </a-scene>
+  </section>
+  <!-- Page sections | About -->
+  <section class="page-sections about" id="about">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-content">Lorem ipsum dolor sit amet, te tritani recusabo nec. Ius admodum fuisset ea, nam ut causae mentitum scribentur. Vix id wisi doctus aperiri, cu ius harum appareat. Pro iudico bonorum interesset ei. Mel sanctus scaevola consectetuer at, ne sea affert congue intellegat.</p>
+    <p class="section-content">Ex facilisis intellegam inciderint nec. Detracto adipiscing et usu. In est dissentias definitionem, latine legimus mel et. Ut vim ferri dolore interpretaris, te sea dico mollis sensibus. Cu eos lorem maluisset, ex congue torquatos usu.</p>
+  </section>
+  <!-- Page sections | Product -->
+  <section class="page-sections product" id="product">
+    <h2 class="section-title">Product</h2>
+    <p class="section-content">Lorem ipsum dolor sit amet, te tritani recusabo nec. Ius admodum fuisset ea, nam ut causae mentitum scribentur. Vix id wisi doctus aperiri, cu ius harum appareat. Pro iudico bonorum interesset ei. Mel sanctus scaevola consectetuer at, ne sea affert congue intellegat.</p>
+    <p class="section-content">Ex facilisis intellegam inciderint nec. Detracto adipiscing et usu. In est dissentias definitionem, latine legimus mel et. Ut vim ferri dolore interpretaris, te sea dico mollis sensibus. Cu eos lorem maluisset, ex congue torquatos usu.</p>
+  </section>
+</body>
+<!-- Page Footer -->
+<footer>
+  <span class="post">Footer message</span>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#product">Product</a>
+  </nav>
+</footer>
+
+
+{% endblock %}
