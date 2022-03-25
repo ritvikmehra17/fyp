@@ -162,12 +162,16 @@ html.a-html {
   bottom: 0;
   margin: auto;
   width: 100%;
-  height: 200px;
-  pointer-events: none;
+  height: fit-content;
+
 }
 .vr-container .action {
   pointer-events: initial;
 }
+
+
+
+
 
 header {
   position: fixed;
@@ -250,6 +254,28 @@ section.home .attribution a {
   text-decoration: none;
 }
 
+
+
+
+section.reg{
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 0;
+}
+
+
+section.log {
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 0;
+}
+
+
+
 section.about {
   background: #eff9f9;
 }
@@ -321,12 +347,19 @@ footer:after {
 }
 
 body {
-  font-size: 16px;
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  color: #2b3a42;
+ 
+}
+label{
+  color: #2b3a42 !important;
+  text-align: left !important;
+  display: block !important;
+}
+small{
+  text-align: left !important;
+}
+.form-group{
+  margin-bottom: .1rem;
+}
+.card-title{
+  color:black;
 }

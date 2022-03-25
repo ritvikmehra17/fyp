@@ -9,7 +9,62 @@
 {% block body %}
 {% include "notify.html" %}
 
-<section class="page-sections home vr-container" id="home">  
+
+<section class="page-sections log vr-container" id="log">
+  <div class="vr-overlay-content">
+    <div class="container">
+      <div class="row justify-items-center">
+        <div class="col-md-5 mt-3 mx-auto">
+          <div class="card shadow-lg border-0 opacity-10" >
+            <div class="card-header">
+              <div class='button-box'>
+                <div id='btn'></div>
+                <button type='button'onclick="location.href = '/login';"class='toggle-btn' >Log In</button>
+                <button type='button'onclick="location.href = '/register';"class='toggle-btn' >Register</button>
+            </div>
+            </div>
+            <div class="card-body" id="login">
+              <form method="post">
+                <div class="form-group">
+                  <label for="username">username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary" id="basic-addon1"><i class="fas fa-user text-white"></i></span>
+                    </div>
+                    <input type="username" class="form-control" name="username" id="username" aria-describedby="usernameHelpId" placeholder="digi_flasker">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary" id="basic-addon2"><i class="fas fa-key text-white"></i></span>
+                    </div>
+                    <input type="password" class="form-control" name="password" id="password" aria-describedby="password" placeholder="the password">
+                  </div>
+                </div>
+                
+                <button class="btn btn-outline-primary btn-lg btn-block mt-5 mb-3">Submit <i class="fa fa-arrow-right" aria-hidden="true"></i> </button>
+                <a href="/forgot" class="lead">Forgot Password ?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a-scene class="vr-background" id="aframe-viewer">
+    <a-entity rotation="0 0 0">
+      <a-animation attribute="rotation" dur="150000" easing="linear" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation>
+      <a-sky src="https://upload.wikimedia.org/wikipedia/commons/1/18/Rheingauer_Dom%2C_Geisenheim%2C_360_Panorama_%28Equirectangular_projection%29.jpg"></a-sky>
+    </a-entity>
+  </a-scene>
+</section>
+
+
+
+<!-- <section class="page-sections login vr-container">  
+  
   <div class="container">
     <div class="row justify-items-center">
       <div class="col-md-6 mt-3 mx-auto">
@@ -53,8 +108,13 @@
       </div>
     </div>
   </div>
-
-</section>
+  <a-scene class="vr-background" id="aframe-viewer">
+    <a-entity rotation="0 0 0">
+      <a-animation attribute="rotation" dur="150000" easing="linear" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation>
+      <a-sky src="https://upload.wikimedia.org/wikipedia/commons/1/18/Rheingauer_Dom%2C_Geisenheim%2C_360_Panorama_%28Equirectangular_projection%29.jpg"></a-sky>
+    </a-entity>
+  </a-scene>
+</section> -->
 
 
 {% endblock %}
