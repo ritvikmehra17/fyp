@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block css %}
+<link rel="stylesheet" href="/static/css/color.css">
 <style>
     * {
       box-sizing: border-box;
@@ -11,14 +12,14 @@
       font-family: Arial;
     }
     
-    /* The grid: Four equal columns that floats next to each other */
+    /* 
     .column {
       float: left;
       width: 25%;
       padding: 10px;
     }
     
-    /* Style the images inside the grid */
+   
     .column img {
       opacity: 0.8; 
       cursor: pointer; 
@@ -30,7 +31,7 @@
       border: 1px solid #777;
     }
     
-    /* Clear floats after the columns */
+    
     .row:after {
       content: "";
       display: table;
@@ -38,14 +39,14 @@
     }
     
 
-    /* Expanding image text */
+    
     #imgtext {
       position: absolute;
       bottom: 15px;
       left: 15px;
       color: white;
       font-size: 20px;
-    }
+    }*/
     
     /* Closable button inside the expanded image */
     .closebtn {
@@ -60,15 +61,58 @@
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
+     
     }
     .image{
       position: relative;
+      /* border: 1px solid black; */
     }
     .delete-icon{
       position:absolute;
       top:.2rem;
       right: .2rem;
+      background-color: transparent;
+      color:black;
+      border:0ch;
     }
+  
+    .btn-primary {
+    border-radius: 4px;
+    background-color: #ff530d;;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-primary span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    
+  }
+
+  .btn-primary span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .btn-primary:hover span {
+    padding-right: 25px;
+    
+  }
+
+.btn-primary:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 </style>
 {% endblock %}
@@ -80,14 +124,14 @@
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Custom View</h1>
       <p class="col-md-8 fs-4">Create your own Virtual Tour (VT) by clicking the below button.</p>
-      <a href="/cube" class="btn btn-primary btn-lg" type="button">create Tour</a>
+      <a href="/cube" class="btn btn-primary btn-lg" type="button" ><span>create Tour</span></a>
     </div>
   </div>
   <div class="row imgrid">
     {% for image in imglist %}
         <div class="image">
           <img src="{{image}}" class="img-fluid shadow-sm" alt="">
-          <a href="/remove/{{image.id}}" class="btn btn-danger btn-sm delete-icon"><i class="fa fa-trash"></i> delete</a>
+          <a href="/remove/{{image.id}}" class="btn btn-danger btn-sm delete-icon"><i class="fa fa-trash"></i></a>
         </div>
     {% endfor %}
     

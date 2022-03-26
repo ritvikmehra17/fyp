@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 
 {% block css %}
-
+<link rel="stylesheet" href="/static/css/color.css">
+<style>
+  .card {
+    
+    border: 1px solid rgba(0,0,0);
+}
+.card-header {
+    background-color: rgb(243, 243, 243);
+    
+}
+.card-fotter {
+    background-color: rgb(243, 243, 243);
+    
+}
+</style>
 {% endblock %}
 
 
@@ -161,7 +175,7 @@
                 </div>
               </div>
               <div class="col-lg-2 col-md-4">
-                <button type="submit" class="btn btn-primary btn-block">submit</button>
+                <button type="submit" class="btn btn-primary btn-block"><span>submit</span></button>
               </div>
             </div>
             

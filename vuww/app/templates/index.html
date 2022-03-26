@@ -1,6 +1,7 @@
  {% extends 'base.html' %}
  
  {% block css %}
+ <link rel="stylesheet" href="/static/css/color.css">
  <style>
     * {
         box-sizing: border-box;
@@ -11,14 +12,14 @@
         font-family: Arial;
     }
     
-    /* The grid: Four equal columns that floats next to each other */
+    /*
     .column {
         float: left;
         width: 25%;
         padding: 10px;
     }
     
-    /* Style the images inside the grid */
+ 
     .column img {
         opacity: 0.8; 
         cursor: pointer; 
@@ -29,8 +30,7 @@
         opacity: 1;
         border: 1px solid #777;
     }
-    
-    /* Clear floats after the columns */
+  
     .row:after {
         content: "";
         display: table;
@@ -38,7 +38,7 @@
     }
     
     
-    /* Expanding image text */
+    
     #imgtext {
         position: absolute;
         bottom: 15px;
@@ -47,7 +47,7 @@
         font-size: 20px;
     }
     
-    /* Closable button inside the expanded image */
+    
     .closebtn {
         position: absolute;
         top: 10px;
@@ -56,6 +56,7 @@
         font-size: 35px;
         cursor: pointer;
     }
+    */
     .imgrid{
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -71,10 +72,23 @@
     }
     .delete-icon2{
         position:absolute;
-        top:.2rem;
-        right: .2rem;
+      top:.2rem;
+      right: .2rem;
+      background-color: transparent;
+      color:black;
+      border:0ch;
     }
     
+    .jumbotron
+    {
+        background-color: #f3f5f4;  
+    }
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.2);
+}
     
     
     
@@ -84,14 +98,9 @@
 {% block body %}
 {% include "notify.html" %}
 <div class="jumbotron">
-    <h1 class="display-3">Welcome </h1>
+    <h1 class="display-4">Welcome </h1>
     <hr class="my-2">
-    <p class="lead">Choose any of the below tour</p>
-    <!-- <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider round"></span>
-    </label> -->
-    
+    <p class="lead">Choose any of the below tour</p>    
     
     <div class="form-check">
         <input class="form-check-input" type="checkbox" checked data-toggle="toggle" data-on="Published" data-off="Unpublished" data-onstyle="success" 

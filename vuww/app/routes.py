@@ -18,7 +18,7 @@ def home():
 @login_required
 def index():
     imglist = MyCube.query.all()
-    return render_template('index.html',title='Home', vrlist=imglist)
+    return render_template('index.html',title='Welcome', vrlist=imglist)
 
 @app.route('/login',methods=['GET', 'POST'])
 def login():
@@ -299,6 +299,9 @@ def removeVT(id):
 def virtualtour(id):
     vr = MyCube.query.get(id)
     spots = MySpot.query.filter_by(cube_id=session.get('last_cube_id'))
+    spx=0
+    spy=-1000
+    spz=-6000
     for sp in spots:
         spx=sp.x
         spy=sp.y
