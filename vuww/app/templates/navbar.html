@@ -16,12 +16,17 @@
           <a class="nav-link text-uppercase" href="{{url_for('index')}}"> Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-uppercase" href="/input"><i class="fas fa-arrow-circle-down"></i> use AI </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-uppercase" href="/upload">upload files</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link text-uppercase" href="/spot"> infospot</a>
         </li>
+
+
         <li class="nav-item">
           <a class="nav-link text-uppercase" href="/dashboard"> dashboard</a>
         </li>
@@ -35,15 +40,22 @@
           <a class="nav-link text-uppercase" href="/home"><i class="fas fa-arrow-circle-down   "></i> Home_screen</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="/vt"><i class="fas fa-arrow-circle-down   "></i> vt</a>
+        </li>  
       </ul>
 
+      <ul class="navbar-nav">
         {% if current_user.is_anonymous %}
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-uppercase" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle    "></i> Account</a>
           <div class="dropdown-menu" aria-labelledby="dropdownId">
             <a class="dropdown-item" href="/login">Login</a>
             <a class="dropdown-item" href="/register">Create free account</a>
           </div>
+        </li>
         {% else %}
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-uppercase" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="{{ current_user.avatar(24) }}" class="rounded-circle">  {{current_user.username}}
           </a>
@@ -51,9 +63,9 @@
             <a class="dropdown-item" href="{{url_for('user',username=current_user.username)}}">Profile</a>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
+        </li>
         {% endif %}
-      
-
+      </ul>
 
 
     </div>
