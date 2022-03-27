@@ -1,13 +1,17 @@
 body {
     
-    background-color: #f3f5f4;  
+    background-color:#c2a788;
+    /* #f38c8c; */
+     /* #AA4A44; */
+    /* #BC4A3C; */
+    /* #f3f5f4;   */
     /* #e5eaf5; */
     /* #f6ebf4; */
 }
 
 .btn-primary {
     border-radius: 4px;
-    background-color: #ff530d;;
+    background-color: #ff530d !important;;
     border: none;
     color: #FFFFFF;
     text-align: center;

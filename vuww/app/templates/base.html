@@ -15,9 +15,27 @@
     {% block css %}{% endblock %}
     <style>
         .purblue{
-            background-image: linear-gradient(45deg,rgb(54, 111, 245),rgb(103, 23, 207));
+            /* background-image: linear-gradient(45deg,rgb(54, 111, 245),rgb(103, 23, 207)); */
+            background-color: #2B3A42;
+            font-size: 14px;
+            font-family: "Montserrat", Helvetica, Arial, sans-serif;
+            padding: 10px 20px;
+           
         }
-        
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255,255,255,.8);
+        }
+        .nav-link:hover,.nav-link:focus{
+            color:rgb(255,83,13) !important;
+        }
+        a {
+            color: rgba(255,255,255,.8);
+            font-size: 14px;
+            font-family: "Montserrat", Helvetica, Arial, sans-serif;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: transparent;
+    }
     </style>
 </head>
 <body>

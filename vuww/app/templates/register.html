@@ -2,8 +2,14 @@
 
 {% block css %}
 <link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/color.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
 <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+<style>
+  .bg-primary {
+    background-color: #ff530d !important;
+}
+</style>
 {% endblock %}
 
 
@@ -66,7 +72,7 @@
                   <small id="passwordHelpId" class="form-text text-muted">password must match confirm password</small>
                 </div>
                 
-                <button class="btn btn-outline-primary btn-lg btn-block mt-1 mb-1">Create account <i class="fa fa-arrow-right" aria-hidden="true"></i> </button>
+                <button class="btn btn-primary btn-lg btn-block mt-1 mb-1"><span>Create account </span></button>
               </form>
             </div>
           </div>

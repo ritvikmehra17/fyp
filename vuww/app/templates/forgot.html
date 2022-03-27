@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
 
 {% block css %}
+<link rel="stylesheet" href="/static/css/color.css">
 <style>
-  body{
-    background-color: rgb(0, 0, 0);
+  .card
+  {
+    margin-top: 6rem;
+    margin-left: auto;
+    margin-right: auto;
   }
+    
+
+.lead {
+    color:#ff530d !important;
+    
+}
+.bg-primary {
+    background-color: #ff530d !important;
+}
 </style>
+
 {% endblock %}
 
 
 {% block body %}
 <div class="container">
   <div class="row justify-items-center">
-    <div class="col-md-6 mt-3 mx-auto">
+    <div class="col-md-5 mt-3 mx-auto">
         {% include "notify.html" %}
       <div class="card shadow-lg border-0">
         <div class="card-header">
@@ -31,11 +45,12 @@
               </div>
               <small id="emailHelpId" class="form-text text-muted"></small>
             </div>
-            <button class="btn btn-outline-primary btn-lg btn-block">Send verification mail <i class="fa fa-arrow-right" aria-hidden="true"></i> </button>
+            <button class="btn btn-primary btn-lg btn-block"><span>Send verification mail</span>  </button>
+            <!-- <i class="fa fa-arrow-right" aria-hidden="true"></i> -->
           </form>
         </div>
         <div class="card-footer bg-secondary">
-          <a name="" id="" class="btn btn-primary" href="/login">Go to Login</a>
+          <a name="" id="" class="btn btn-primary" href="/login"><span>Go to Login</span></a>
         </div>
       </div>
     </div>
