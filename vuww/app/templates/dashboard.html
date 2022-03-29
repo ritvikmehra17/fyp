@@ -11,44 +11,6 @@
       margin: 0;
       font-family: Arial;
     }
-    
-    /* 
-    .column {
-      float: left;
-      width: 25%;
-      padding: 10px;
-    }
-    
-   
-    .column img {
-      opacity: 0.8; 
-      cursor: pointer; 
-      border: 1px solid #ccc;
-    }
-    
-    .column img:hover {
-      opacity: 1;
-      border: 1px solid #777;
-    }
-    
-    
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-    
-
-    
-    #imgtext {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      color: white;
-      font-size: 20px;
-    }*/
-    
-    /* Closable button inside the expanded image */
     .closebtn {
       position: absolute;
       top: 10px;
@@ -63,9 +25,15 @@
       gap: 1rem;
      
     }
-    .image{
-      position: relative;
-      /* border: 1px solid black; */
+    .jumbotron
+    {
+        background-color: #f3f5f4;  
+    }
+    
+    .image {
+    position: relative;
+    border-radius: 0.25rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.4)!important;
     }
     .delete-icon{
       position:absolute;
@@ -119,14 +87,22 @@
 
 {% block body %}
 {% include "notify.html" %}
+<div class="jumbotron">
+  <h1 class="display-4">Custom View </h1>
+  <hr class="my-2">
+  <p class="lead">Create your own Virtual Tour (VT) by clicking the below button.</p>    
+  <a href="/cube" class="btn btn-primary btn-lg" type="button" ><span>create Tour</span></a>
+  
+</div>
 <div class="container">
-  <div class="p-5 mb-4 rounded-3">
+  <!-- <div class="p-5 mb-4 rounded-3">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Custom View</h1>
       <p class="col-md-8 fs-4">Create your own Virtual Tour (VT) by clicking the below button.</p>
       <a href="/cube" class="btn btn-primary btn-lg" type="button" ><span>create Tour</span></a>
     </div>
-  </div>
+  </div> -->
+  
   <div class="row imgrid">
     {% for image in imglist %}
         <div class="image">
