@@ -26,14 +26,18 @@ label {
     text-align: left !important;
     display: block !important;
 }
+.alert{
+  margin-bottom: 0rem;
+}
 </style>
 {% endblock %}
 
 {% block body %}
-{% include "notify.html" %}
+
 
 
 <section class="page-sections log vr-container" id="log">
+  {% include "notify.html" %}
   <div class="vr-overlay-content">
     <div class="container">
       <div class="row justify-items-center">

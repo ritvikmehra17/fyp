@@ -72,10 +72,25 @@ def register():
 def forgot():
     if request.method=='POST':
         email = request.form.get('email')
-        if email:
-            pass
-    return render_template('forgot.html', title='Password reset page')
-    
+        password = request.form.get('password')
+        cpassword = request.form.get('cpassword')
+        print( email,password)
+        if password and email and cpassword:
+            if cpassword != password:
+                flash('Password do not match','danger')
+                return redirect('/forgot')
+            else:    
+                user = User.query.filter_by(email=email).first()
+                user.set_password(password)
+                db.session.add(user)
+                db.session.commit()
+                flash('Congratulations, have reset your password!','success')
+                return redirect(url_for('login'))
+        else:
+            flash('Password Reset Failure','danger')
+            return redirect('/forgot')
+
+    return render_template('forgot.html', title='Password Reset Page')
 
 @app.route('/logout')
 def logout():
